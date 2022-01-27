@@ -5,4 +5,5 @@ exports.Product = {
     reviews: ({id: productId},args,{reviews}) => {
          return reviews.filter(review => review.productId == productId);
     }
+
 }

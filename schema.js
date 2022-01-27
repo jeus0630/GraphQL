@@ -3,7 +3,7 @@ exports.typeDefs = gql`
     
     type Query {
         hello: [String]
-        products: [Product!]!
+        products(filter: ProductsFilterInput): [Product!]!
         product(id: ID!): Product
         categories: [Category!]!
         category(id: ID!): Category
@@ -24,8 +24,8 @@ exports.typeDefs = gql`
     
     type Category{
         id: ID!
-        name: String!
-        products: [Product!]!
+        name: String! 
+        products(filter: ProductsFilterInput): [Product!]!
     }
     
     type Review{
@@ -35,5 +35,17 @@ exports.typeDefs = gql`
         comment: String!
         rating: Int!
         productId: String!
+    }
+    
+    input ProductsFilterInput {
+        onSale: Boolean
+    }
+    
+    type Mutation{
+        addCategory(input: AddCategoryInputs!): Category!
+    }
+    
+    input AddCategoryInputs {
+        name: String!
     }
 `
